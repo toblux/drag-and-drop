@@ -2,8 +2,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [org.clojure/clojurescript "1.9.521"]
                  [org.omcljs/om "1.0.0-alpha48"]]
-  :plugins [[lein-cljsbuild "1.1.5"]
-            [lein-figwheel "0.5.9"]]
+  :plugins [[lein-cljsbuild "1.1.6"]
+            [lein-figwheel "0.5.10"]]
   :clean-targets ^{:protect false} ["target"
                                     "resources/public/js"
                                     ".lein-repl-history"
