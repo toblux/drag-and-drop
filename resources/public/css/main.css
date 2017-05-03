@@ -26,6 +26,7 @@ noscript {
 #drag-and-drop {
   width: var(--board-width-height);
   height: var(--board-width-height);
+  user-select: none;
 }
 
 .board {
