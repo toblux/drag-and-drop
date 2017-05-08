@@ -75,8 +75,3 @@ noscript {
   height: var(--stone-width-height);
   float: left;
 }
-
-.stone {
-  width: var(--stone-width-height);
-  height: var(--stone-width-height);
-}

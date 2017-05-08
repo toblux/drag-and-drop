@@ -19,15 +19,8 @@
 (defn square [x]
   (.pow js/Math x 2))
 
-(def image-dir "/images/")
-
-(defn image-src [filename]
-  (str image-dir filename ".png"))
-
-(defn images-srcset [filename]
-  (str/join ","
-    [(str image-dir filename "@2x.png 2x")
-     (str image-dir filename "@3x.png 3x")]))
+(def white-stone-img (goban/stone-image 20 true))
+(def black-stone-img (goban/stone-image 20 false))
 
 ;;; Drag and Drop
 
@@ -80,12 +73,10 @@
     om/IRenderState
     (render-state [_ {:keys [dragging? position color]}]
       (dom/img #js
-        {:className "stone"
-         :style #js {:opacity (when dragging? 0)}
+        {:style #js {:opacity (when dragging? 0)}
+         :src (if (goban/black-stone? color) black-stone-img white-stone-img)
          :onDragStart #(handle-drag-start % owner position color)
          :onDragEnd #(handle-drag-end % owner)
-         :srcSet (images-srcset color)
-         :src (image-src color)
          :draggable true}))))
 
 (defn interactive-grid [data owner]

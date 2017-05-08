@@ -1,12 +1,27 @@
 (ns drag-and-drop.goban
-  (:require [cljs.spec :as s]))
+  (:require [drag-and-drop.dali :as dali]
+            [cljs.spec :as s]))
 
 (def black-stone 'b)
 (def white-stone 'w)
 
+(defn black-stone? [stone] (= stone black-stone))
+(defn white-stone? [stone] (= stone white-stone))
+
+(defn stone-image [radius white?]
+  (let [diameter (* 2 radius)
+        canvas (.createElement js/document "canvas")
+        ctx (dali/setup-canvas! canvas diameter diameter)]
+    (-> ctx
+      (dali/fill-style! "#333")
+      (dali/fill-circle! radius radius radius)
+      (dali/fill-style! (if white? "white" "black"))
+      (dali/fill-circle! radius radius (dec radius)))
+    (.toDataURL canvas)))
+
 ;;; Spec
 
-(s/def ::stone #(or (= black-stone %) (= white-stone %)))
+(s/def ::stone #(or (black-stone? %) (white-stone? %)))
 (s/def ::board (s/coll-of (s/nilable ::stone)))
 (s/def ::board-size #(contains? #{7 9 13 19} %))
 
