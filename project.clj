@@ -10,16 +10,18 @@
                                     "figwheel_server.log"]
   :cljsbuild {:builds
               [{:id "debug"
-                :source-paths ["src"]
                 :figwheel true
-                :compiler {:output-to "resources/public/js/drag-and-drop.js"
-                           :output-dir "resources/public/js/out"
+                :source-paths ["src"]
+                :compiler {:main "drag-and-drop.core"
+                           :asset-path "js"
+                           :output-to "resources/public/js/drag-and-drop.js"
+                           :output-dir "resources/public/js"
                            :optimizations :none
                            :source-map true}}
                {:id "release"
                 :source-paths ["src"]
                 :compiler {:elide-asserts true
                            :pretty-print false
-                           :output-to "resources/public/js/drag-and-drop.min.js"
+                           :output-to "resources/public/js/drag-and-drop.js"
                            :optimizations :advanced}}]}
   :figwheel {:css-dirs ["resources/public/css"]})
