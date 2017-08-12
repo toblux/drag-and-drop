@@ -10,4 +10,9 @@ figwheel:
 clean:
 	lein clean
 
-.PHONY: debug release figwheel clean
+demo: release
+	cp resources/public/index.html docs/index.html
+	cp resources/public/css/main.css docs/css/main.css
+	cp resources/public/js/drag-and-drop.js docs/js/drag-and-drop.js
+
+.PHONY: debug release figwheel clean demo
