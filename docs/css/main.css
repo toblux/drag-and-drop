@@ -18,9 +18,9 @@ noscript {
 /* CSS Variables */
 
 :root {
-  --board-width-height: 280px;
   --stone-width-height: 40px;
-  --border-width: calc(var(--stone-width-height) / 2);
+  --board-width-height: 280px;
+  --board-padding: calc(var(--stone-width-height) / 2);
   --board-background-color: rgb(251,196,103);
   --board-line-color: black;
 }
@@ -46,11 +46,11 @@ noscript {
 
 .background-grid-cells {
   background-color: var(--board-line-color);
-  padding: var(--border-width);
+  padding: var(--board-padding);
 }
 
 .background-grid-border {
-  border: calc(var(--border-width) - 1px) solid var(--board-background-color);
+  border: calc(var(--board-padding) - 1px) solid var(--board-background-color);
 
   /* to center the dot in the middle of the board */
   display: flex;
@@ -76,4 +76,9 @@ noscript {
   width: var(--stone-width-height);
   height: var(--stone-width-height);
   float: left;
+}
+
+.interactive-cell img {
+  width: 100%;
+  height: 100%;
 }
