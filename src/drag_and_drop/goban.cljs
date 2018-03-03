@@ -1,6 +1,6 @@
 (ns drag-and-drop.goban
   (:require [drag-and-drop.dali :as dali]
-            [cljs.spec :as s]))
+            [cljs.spec.alpha :as s]))
 
 (def black-stone 'b)
 (def white-stone 'w)
